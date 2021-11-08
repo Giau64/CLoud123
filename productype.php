@@ -14,7 +14,7 @@
 		if (!$result) { //add this check.
  			die('Invalid query: ' . pg_error($conn));
 		}
- 		while($row = pg_fetch_array($result, pg_assoc)){
+ 		while($row = pg_fetch_array($result,NULL, PGSQL_ASSOC)){
  	?>
     <form method="GET" action="#">
         <div class="col-sm-5">

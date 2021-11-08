@@ -8,7 +8,7 @@
 		$result = pg_query($conn, $sqlstring);
 		echo "<select name='CategoryList' class='form-control'>
 		<option value='0'>Chose category</option>";
-		while ($row = pg_fetch_array($result, pgsql_assoc)){
+		while ($row = pg_fetch_array($result,NULL, PGSQL_ASSOC)){
 			echo "<option value='".$row['cat_id']."'>".$row['cat_name']."</option>";
 		}
 		echo "</select>";
@@ -56,7 +56,7 @@
 				{
 					$sq="SELECT * FROM public.product WHERE product_id='$id' or product_name='$proname'";
 					$result=pg_query($conn,$sq);
-					if(mysqli_num_rows($result)==0)
+					if(pg_num_rows($result)==0)
 					{
 						copy($pic['tmp_name'], "product-imgs/".$pic['name']);
 						$filePic = $pic['name'];
